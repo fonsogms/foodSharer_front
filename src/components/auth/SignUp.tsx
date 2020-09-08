@@ -29,7 +29,7 @@ const SingUp = (props) => {
         data: { token },
       } = await axios.post<{
         token: string;
-      }>(process.env.REACT_APP_DOMAIN || "" + "/api/auth/signUp", signUp);
+      }>((process.env.REACT_APP_DOMAIN || "") + "/api/auth/signUp", signUp);
       props.setToken(token);
       props.history.push("/home");
     } catch (error) {
