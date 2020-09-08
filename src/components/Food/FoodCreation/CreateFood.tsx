@@ -35,7 +35,7 @@ const CreateFood = (props) => {
         });
 
         await axios.delete(
-          process.env.REACT_APP_DOMAIN || "" + "/api/food/cloudinary",
+          (process.env.REACT_APP_DOMAIN || "") + "/api/food/cloudinary",
           {
             headers: {
               Authorization: "Bearer " + props.token,
@@ -58,7 +58,7 @@ const CreateFood = (props) => {
     const token = `Bearer ${props.token}`;
     try {
       const { data } = await axios.post(
-        process.env.REACT_APP_DOMAIN || "" + "/api/food/add",
+        (process.env.REACT_APP_DOMAIN || "") + "/api/food/add",
         foodDto,
         {
           headers: {

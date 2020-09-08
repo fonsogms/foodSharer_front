@@ -55,7 +55,7 @@ const FoodEdit = (props) => {
         });
 
         await axios.delete(
-          process.env.REACT_APP_DOMAIN || "" + "/api/food/cloudinary",
+          (process.env.REACT_APP_DOMAIN || "") + "/api/food/cloudinary",
           {
             headers: {
               Authorization: "Bearer " + props.token,

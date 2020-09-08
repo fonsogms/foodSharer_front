@@ -21,7 +21,7 @@ const Login = (props) => {
     try {
       const requestBody = await JSON.stringify(signIn);
       const body = await fetch(
-        process.env.REACT_APP_DOMAIN || "" + "/api/auth/signIn",
+        (process.env.REACT_APP_DOMAIN || "") + "/api/auth/signIn",
         {
           method: "POST",
           headers: {

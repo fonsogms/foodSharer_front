@@ -4,7 +4,7 @@ import axios from "axios";
 const Navbar = (props) => {
   const logout = async () => {
     const body = await fetch(
-      process.env.REACT_APP_DOMAIN || "" + "/api/auth/logout",
+      (process.env.REACT_APP_DOMAIN || "") + "/api/auth/logout",
       {
         method: "POST",
         credentials: "include",
