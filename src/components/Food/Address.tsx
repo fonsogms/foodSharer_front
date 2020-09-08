@@ -10,7 +10,7 @@ const Address = (props) => {
     e: ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
     const { name, value } = e.target;
-    props.setFoodDto({ ...props.foodDto, [name]: value });
+    props.setTarget({ ...props.target, [name]: value });
     try {
       const {
         data: { features },
@@ -24,8 +24,8 @@ const Address = (props) => {
 
   const selectSuggestion = (place) => {
     const [longitude, latitude] = place.center;
-    props.setFoodDto({
-      ...props.foodDto,
+    props.setTarget({
+      ...props.target,
       address: place.place_name,
       latitude,
       longitude,
@@ -40,7 +40,7 @@ const Address = (props) => {
           type="text"
           name="address"
           onChange={handleChange}
-          value={props.foodDto.address}
+          value={props.target.address}
         />
       </div>
       {suggestions.map((elem, index) => {

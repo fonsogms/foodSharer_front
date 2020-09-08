@@ -10,6 +10,7 @@ import FoodEdit from "./components/Food/editFood/FoodEdit";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile/Profile";
 import ProfileFood from "./components/Profile/ProfileFood";
+import ProfileEdit from "./components/Profile/ProfileEdit";
 function App(props) {
   const [token, setToken] = useState<string>(props.token);
 
@@ -38,6 +39,13 @@ function App(props) {
           path="/profile/food"
           render={() => {
             return <ProfileFood {...props} token={token}></ProfileFood>;
+          }}
+        ></Route>
+        <Route
+          exact
+          path="/profile/edit"
+          render={(props) => {
+            return <ProfileEdit {...props} token={token} />;
           }}
         ></Route>
         <Route

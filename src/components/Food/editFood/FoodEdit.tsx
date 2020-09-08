@@ -177,7 +177,7 @@ const FoodEdit = (props) => {
                     </div>
                   </div>
 
-                  <Address foodDto={foodDto} setFoodDto={setFoodDto}></Address>
+                  <Address target={foodDto} setTarget={setFoodDto}></Address>
                   <FileUpload
                     setFoodDto={setFoodDto}
                     foodDto={foodDto}
