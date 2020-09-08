@@ -24,7 +24,7 @@ const FoodDetails = (props) => {
       try {
         const { data } = await axios.get(
           (process.env.REACT_APP_DOMAIN || "") +
-            "/api/food/" +
+            "/api/food/details/" +
             props.match.params.id,
           { headers: { Authorization: "Bearer " + props.token } }
         );

@@ -136,60 +136,60 @@ const FoodEdit = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {errorMessage[0] && !foodDto.title ? (
-          errorMessage.map((elem, index) => {
-            return <h2 key={index}>{elem}</h2>;
-          })
-        ) : (
-          <>
-            <div>
-              <div>
-                <h4> Title</h4>
+        {errorMessage[0]
+          ? errorMessage.map((elem, index) => {
+              return <h2 key={index}>{elem}</h2>;
+            })
+          : foodDto.title && (
+              <>
                 <div>
-                  <input
-                    type="text"
-                    name="title"
-                    onChange={handleChange}
-                    value={foodDto.title}
-                  />
-                </div>
-              </div>
-              <div>
-                <h4>Description</h4>
-                <div>
-                  <input
-                    type="text"
-                    name="description"
-                    onChange={(e) => handleChange(e)}
-                    value={foodDto.description}
-                  />
-                </div>
-              </div>
-              <div>
-                <h4>Expiry Date</h4>
-                <div>
-                  <input
-                    type="Date"
-                    name="expiryDate"
-                    onChange={handleChange}
-                    value={foodDto.expiryDate}
-                  />
-                </div>
-              </div>
+                  <div>
+                    <h4> Title</h4>
+                    <div>
+                      <input
+                        type="text"
+                        name="title"
+                        onChange={handleChange}
+                        value={foodDto.title}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Description</h4>
+                    <div>
+                      <input
+                        type="text"
+                        name="description"
+                        onChange={(e) => handleChange(e)}
+                        value={foodDto.description}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Expiry Date</h4>
+                    <div>
+                      <input
+                        type="Date"
+                        name="expiryDate"
+                        onChange={handleChange}
+                        value={foodDto.expiryDate}
+                      />
+                    </div>
+                  </div>
 
-              <Address foodDto={foodDto} setFoodDto={setFoodDto}></Address>
-              <FileUpload
-                setFoodDto={setFoodDto}
-                foodDto={foodDto}
-                token={props.token}
-              ></FileUpload>
-            </div>
-            <div style={{ margin: "10px" }}>
-              <button type="submit">Edit Food</button>
-              <button onClick={deleteFood}>Delete Food</button>
-            </div>
-          </>
-        )}
+                  <Address foodDto={foodDto} setFoodDto={setFoodDto}></Address>
+                  <FileUpload
+                    setFoodDto={setFoodDto}
+                    foodDto={foodDto}
+                    token={props.token}
+                  ></FileUpload>
+                </div>
+                <div style={{ margin: "10px" }}>
+                  <button type="submit">Edit Food</button>
+                  <button onClick={deleteFood}>Delete Food</button>
+                </div>
+              </>
+            )}
       </form>
     </div>
   );
