@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 const Navbar = (props) => {
   const logout = async () => {
-    const body = await fetch(
-      process.env.REACT_APP_DOMAIN + "/api/auth/logout",
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
+    const body = await fetch(process.env.DOMAIN || "" + "/api/auth/logout", {
+      method: "POST",
+      credentials: "include",
+    });
 
     props.setToken("");
   };

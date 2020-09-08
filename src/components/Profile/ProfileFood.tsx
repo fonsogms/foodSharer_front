@@ -7,7 +7,7 @@ const ProfileFood = (props) => {
     const getProfile = async () => {
       try {
         const { data } = await axios.get(
-          process.env.REACT_APP_DOMAIN + "/api/auth/profile",
+          process.env.DOMAIN || "" + "/api/auth/profile",
           { headers: { Authorization: "Bearer " + props.token } }
         );
         setFoodItems(data.food);

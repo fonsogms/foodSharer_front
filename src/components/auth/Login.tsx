@@ -20,17 +20,14 @@ const Login = (props) => {
     e.preventDefault();
     try {
       const requestBody = await JSON.stringify(signIn);
-      const body = await fetch(
-        process.env.REACT_APP_DOMAIN + "/api/auth/signIn",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: requestBody,
-        }
-      );
+      const body = await fetch(process.env.DOMAIN || "" + "/api/auth/signIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: requestBody,
+      });
 
       const data = await body.json();
       if (data.token) {

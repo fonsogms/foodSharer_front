@@ -10,17 +10,6 @@ const FileUpload = (props) => {
     data.append("file", files[0]);
     data.append("upload_preset", "foodSharer");
 
-    /*   await axios.post(
-      process.env.REACT_APP_DOMAIN + "/api/food/cloudinaryUpload",
-
-      data,
-      {
-        headers: {
-          Authorization: "Bearer " + getToken(),
-          "content-type": `multipart/form-data;`,
-        },
-      }
-    ); */
     try {
       const fileInfo = await axios.post(
         `${process.env.REACT_APP_CLOUDINARY}`,
@@ -47,7 +36,7 @@ const FileUpload = (props) => {
       }
     });
 
-    await axios.delete(process.env.REACT_APP_DOMAIN + "/api/food/cloudinary", {
+    await axios.delete(process.env.DOMAIN || "" + "/api/food/cloudinary", {
       headers: {
         Authorization: "Bearer " + props.token,
       },

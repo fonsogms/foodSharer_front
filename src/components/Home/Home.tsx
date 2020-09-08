@@ -111,8 +111,9 @@ const Home = (props) => {
   ) => {
     try {
       const { data } = await axios.get(
-        process.env.REACT_APP_DOMAIN +
-          `/api/food?latitude=${latitude}&longitude=${longitude}&distance=${distance}`,
+        process.env.DOMAIN ||
+          "" +
+            `/api/food?latitude=${latitude}&longitude=${longitude}&distance=${distance}`,
         { headers: { Authorization: "Bearer " + token } }
       );
       return data;
