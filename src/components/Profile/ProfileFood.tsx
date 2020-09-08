@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { FoodObject } from "../Food/foodDetails/FoodDetails";
 const ProfileFood = (props) => {
   const [foodItems, setFoodItems] = useState<FoodObject[] | null>(null);
@@ -18,6 +19,30 @@ const ProfileFood = (props) => {
 
     getProfile();
   }, []);
+  const handleDelete = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number
+  ) => {
+    try {
+      const { data } = await axios.delete(
+        process.env.REACT_APP_DOMAIN + "/api/food/" + id,
+        {
+          headers: {
+            Authorization: "Bearer " + props.token,
+          },
+        }
+      );
+      //@ts-ignore
+      const filteredFood = foodItems.filter((elem) => {
+        if (elem.id != id) {
+          return true;
+        }
+      });
+      setFoodItems(filteredFood);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div
       style={{
@@ -48,8 +73,21 @@ const ProfileFood = (props) => {
                     />
                   </div>
                 )}
-                <div>
+                <div style={{ margin: "10px" }}>
                   <h2>{elem.title}</h2>
+                </div>
+                <div style={{ margin: "10px" }}>
+                  {" "}
+                  <Link to={`/food/edit/${elem.id}`}>Edit</Link>
+                </div>
+                <div style={{ margin: "10px" }}>
+                  <button
+                    onClick={(e) => {
+                      handleDelete(e, elem.id);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             );
