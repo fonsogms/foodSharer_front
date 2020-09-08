@@ -5,11 +5,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 const bootstrap = async () => {
-  console.log(process.env.DOMAIN);
-  const body = await fetch(process.env.DOMAIN || "" + "/api/auth/loggedin", {
-    method: "POST",
-    credentials: "include",
-  });
+  const body = await fetch(
+    process.env.REACT_APP_DOMAIN || "" + "/api/auth/loggedin",
+    {
+      method: "POST",
+      credentials: "include",
+    }
+  );
   const data = await body.json();
   console.log(data);
   if (data.token) {

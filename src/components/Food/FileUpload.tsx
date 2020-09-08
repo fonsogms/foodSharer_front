@@ -36,12 +36,15 @@ const FileUpload = (props) => {
       }
     });
 
-    await axios.delete(process.env.DOMAIN || "" + "/api/food/cloudinary", {
-      headers: {
-        Authorization: "Bearer " + props.token,
-      },
-      data: { id: [id] },
-    });
+    await axios.delete(
+      process.env.REACT_APP_DOMAIN || "" + "/api/food/cloudinary",
+      {
+        headers: {
+          Authorization: "Bearer " + props.token,
+        },
+        data: { id: [id] },
+      }
+    );
 
     props.setFoodDto({ ...props.foodDto, pictures: filteredPics });
   };

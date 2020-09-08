@@ -34,14 +34,17 @@ const CreateFood = (props) => {
           return elem.public_id;
         });
 
-        await axios.delete(process.env.DOMAIN || "" + "/api/food/cloudinary", {
-          headers: {
-            Authorization: "Bearer " + props.token,
-          },
-          data: {
-            id: ids,
-          },
-        });
+        await axios.delete(
+          process.env.REACT_APP_DOMAIN || "" + "/api/food/cloudinary",
+          {
+            headers: {
+              Authorization: "Bearer " + props.token,
+            },
+            data: {
+              id: ids,
+            },
+          }
+        );
       };
       window.onbeforeunload = handleUnload;
     }
@@ -55,7 +58,7 @@ const CreateFood = (props) => {
     const token = `Bearer ${props.token}`;
     try {
       const { data } = await axios.post(
-        process.env.DOMAIN || "" + "/api/food/add",
+        process.env.REACT_APP_DOMAIN || "" + "/api/food/add",
         foodDto,
         {
           headers: {

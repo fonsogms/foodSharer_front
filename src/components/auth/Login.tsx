@@ -20,14 +20,17 @@ const Login = (props) => {
     e.preventDefault();
     try {
       const requestBody = await JSON.stringify(signIn);
-      const body = await fetch(process.env.DOMAIN || "" + "/api/auth/signIn", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: requestBody,
-      });
+      const body = await fetch(
+        process.env.REACT_APP_DOMAIN || "" + "/api/auth/signIn",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: requestBody,
+        }
+      );
 
       const data = await body.json();
       if (data.token) {
@@ -37,10 +40,6 @@ const Login = (props) => {
         console.log(data);
         setErrorMessage([data.message]);
       }
-      /*   const token: string = await axios.post(
-        process.env.REACT_APP_DOMAIN + "/api/auth/signIn",
-        signIn
-      ); */
     } catch (error) {
       console.log(error, "here");
       console.log(error.response.data, "this is the error");

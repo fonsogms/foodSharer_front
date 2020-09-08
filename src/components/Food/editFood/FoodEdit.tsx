@@ -25,7 +25,8 @@ const FoodEdit = (props) => {
     const getData = async (): Promise<void> => {
       try {
         const { data } = await axios.get(
-          process.env.DOMAIN || "" + "/api/food/" + props.match.params.id,
+          process.env.REACT_APP_DOMAIN ||
+            "" + "/api/food/" + props.match.params.id,
           { headers: { Authorization: "Bearer " + props.token } }
         );
         setErrorMessage([""]);
@@ -53,14 +54,17 @@ const FoodEdit = (props) => {
           return elem.public_id;
         });
 
-        await axios.delete(process.env.DOMAIN || "" + "/api/food/cloudinary", {
-          headers: {
-            Authorization: "Bearer " + props.token,
-          },
-          data: {
-            id: ids,
-          },
-        });
+        await axios.delete(
+          process.env.REACT_APP_DOMAIN || "" + "/api/food/cloudinary",
+          {
+            headers: {
+              Authorization: "Bearer " + props.token,
+            },
+            data: {
+              id: ids,
+            },
+          }
+        );
       };
       window.onbeforeunload = handleUnload;
     }
@@ -73,7 +77,8 @@ const FoodEdit = (props) => {
     const token = `Bearer ${props.token}`;
     try {
       const { data } = await axios.put(
-        process.env.DOMAIN || "" + "/api/food/" + props.match.params.id,
+        process.env.REACT_APP_DOMAIN ||
+          "" + "/api/food/" + props.match.params.id,
         foodDto,
         {
           headers: {
@@ -104,7 +109,8 @@ const FoodEdit = (props) => {
     const token = `Bearer ${props.token}`;
     try {
       const { data } = await axios.delete(
-        process.env.DOMAIN || "" + "/api/food/" + props.match.params.id,
+        process.env.REACT_APP_DOMAIN ||
+          "" + "/api/food/" + props.match.params.id,
         {
           headers: {
             Authorization: token,
