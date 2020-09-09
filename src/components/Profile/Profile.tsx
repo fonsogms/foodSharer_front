@@ -15,16 +15,32 @@ const Profile = (props) => {
     latitude: 0,
     longitude: 0,
     mail: "",
-    food: [],
   });
+  const [errorMessage, setErrorMessage] = useState<string[]>([""]);
+
   const [edit, setEdit] = useState<boolean>(false);
   useEffect(() => {
     const getProfile = async () => {
-      const { data } = await axios.get(
-        (process.env.REACT_APP_DOMAIN || "") + "/api/auth/profile",
-        { headers: { Authorization: "Bearer " + props.token } }
-      );
-      setProfileData(data);
+      try {
+        const { data } = await axios.get(
+          (process.env.REACT_APP_DOMAIN || "") + "/api/profile",
+          { headers: { Authorization: "Bearer " + props.token } }
+        );
+        setProfileData(data);
+      } catch (error) {
+        console.log(error);
+        console.log(error.response.data.message);
+        let newErrorMessage: string[] = [""];
+        if (typeof error.response.data.message == "string") {
+          newErrorMessage[0] = error.response.data.message;
+        } else {
+          newErrorMessage = error.response.data.message;
+        }
+        if (newErrorMessage.includes("Unauthorized")) {
+          props.history.push("/");
+        }
+        setErrorMessage(newErrorMessage);
+      }
     };
     getProfile();
   }, []);
@@ -48,6 +64,7 @@ const Profile = (props) => {
           profileData={profileData}
           setProfileData={setProfileData}
           setEdit={setEdit}
+          token={props.token}
         />
       )}
     </div>

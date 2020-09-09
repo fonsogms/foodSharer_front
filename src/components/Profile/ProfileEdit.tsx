@@ -12,12 +12,28 @@ const ProfileEdit = (props) => {
     setEditableProfileData({ ...editableProfileData, [name]: value });
   };
 
-  const handleEdit = async () => {};
-  const discardEdit = async () => {};
+  const handleEdit = async () => {
+    try {
+      const { data } = await axios.post(
+        process.env.REACT_APP_DOMAIN + "/api/profile",
+        editableProfileData,
+        {
+          headers: {
+            Authorization: "Bearer " + props.token,
+          },
+        }
+      );
+      props.setProfileData({ ...props.profileData, ...data });
+      props.setEdit(false);
+    } catch (error) {}
+  };
   return (
     <div>
+      <h2>Change your contact details</h2>
       {Object.keys(editableProfileData).map((elem) => {
-        console.log(editableProfileData[elem]);
+        if (elem == "username") {
+          return null;
+        }
         if (elem == "address") {
           return (
             <Address
@@ -43,7 +59,7 @@ const ProfileEdit = (props) => {
         }
       })}
       <div>
-        <button>Save edit</button>
+        <button onClick={handleEdit}>Save edit</button>
         <button
           onClick={() => {
             props.setEdit(false);

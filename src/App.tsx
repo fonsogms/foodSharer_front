@@ -30,7 +30,7 @@ function App(props) {
         <Route
           exact
           path="/profile"
-          render={() => {
+          render={(props) => {
             return <Profile {...props} token={token}></Profile>;
           }}
         ></Route>

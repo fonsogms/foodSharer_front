@@ -4,7 +4,6 @@ const ShowProfile = (props) => {
   return (
     <div>
       {Object.keys(props.profileData).map((elem) => {
-        console.log(props.profileData[elem]);
         if (typeof props.profileData[elem] === "string") {
           return (
             <div>

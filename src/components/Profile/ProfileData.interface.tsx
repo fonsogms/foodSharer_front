@@ -8,5 +8,4 @@ export interface ProfileData {
   address: string;
   latitude: number;
   longitude: number;
-  food: FoodObject[];
 }
