@@ -2,24 +2,25 @@ import React, { SyntheticEvent, useState, ChangeEvent } from "react";
 import axios from "axios";
 const FileUpload = (props) => {
   const [loading, setLoading] = useState<Boolean>(false);
+
   const uploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     setLoading(true);
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "foodSharer");
+    data.append("image", files[0]);
 
     try {
       const fileInfo = await axios.post(
-        `${process.env.REACT_APP_CLOUDINARY}`,
-        data
+        process.env.REACT_APP_DOMAIN + "/upload/image",
+        data,
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
       setLoading(false);
       props.setFoodDto({
         ...props.foodDto,
         pictures: [
-          { url: fileInfo.data.secure_url, public_id: fileInfo.data.public_id },
+          { url: fileInfo.data.url, public_id: fileInfo.data.public_id },
           ...props.foodDto.pictures,
         ],
       });

@@ -17,74 +17,76 @@ function App(props) {
   return (
     <div className="App">
       <Navbar token={token} setToken={setToken}></Navbar>
-      <Switch>
-        <Route
-          exact
-          path="/singUp"
-          render={(props) => {
-            return (
-              <SignUp {...props} token={token} setToken={setToken}></SignUp>
-            );
-          }}
-        />
-        <Route
-          exact
-          path="/profile"
-          render={(props) => {
-            return <Profile {...props} token={token}></Profile>;
-          }}
-        ></Route>
-        <Route
-          exact
-          path="/profile/food"
-          render={() => {
-            return <ProfileFood {...props} token={token}></ProfileFood>;
-          }}
-        ></Route>
-        <Route
-          exact
-          path="/profile/edit"
-          render={(props) => {
-            return <ProfileEdit {...props} token={token} />;
-          }}
-        ></Route>
-        <Route
-          exact
-          path="/login"
-          render={(props) => {
-            return <Login {...props} token={token} setToken={setToken}></Login>;
-          }}
-        />
-        <Route
-          exact
-          path="/home"
-          render={(props) => {
-            return <Home {...props} token={token}></Home>;
-          }}
-        />
+      <Route
+        exact
+        path="/singUp"
+        render={(props) => {
+          return <SignUp {...props} token={token} setToken={setToken}></SignUp>;
+        }}
+      />
+      <Route
+        exact
+        path="/login"
+        render={(props) => {
+          return <Login {...props} token={token} setToken={setToken}></Login>;
+        }}
+      />
 
-        <Route
-          exact
-          path="/food/add"
-          render={(props) => {
-            return <CreateFood {...props} token={token}></CreateFood>;
-          }}
-        />
-        <Route
-          exact
-          path="/food/edit/:id"
-          render={(props) => {
-            return <FoodEdit {...props} token={token}></FoodEdit>;
-          }}
-        />
-        <Route
-          exact
-          path="/food/:id"
-          render={(props) => {
-            return <FoodDetails {...props} token={token}></FoodDetails>;
-          }}
-        />
-      </Switch>
+      {token ? (
+        <Switch>
+          <Route
+            exact
+            path="/profile"
+            render={(props) => {
+              return <Profile {...props} token={token}></Profile>;
+            }}
+          ></Route>
+          <Route
+            exact
+            path="/profile/food"
+            render={() => {
+              return <ProfileFood {...props} token={token}></ProfileFood>;
+            }}
+          ></Route>
+          <Route
+            exact
+            path="/profile/edit"
+            render={(props) => {
+              return <ProfileEdit {...props} token={token} />;
+            }}
+          ></Route>
+
+          <Route
+            exact
+            path="/home"
+            render={(props) => {
+              return <Home {...props} token={token}></Home>;
+            }}
+          />
+
+          <Route
+            exact
+            path="/food/add"
+            render={(props) => {
+              return <CreateFood {...props} token={token}></CreateFood>;
+            }}
+          />
+          <Route
+            exact
+            path="/food/edit/:id"
+            render={(props) => {
+              return <FoodEdit {...props} token={token}></FoodEdit>;
+            }}
+          />
+          <Route
+            exact
+            path="/food/:id"
+            render={(props) => {
+              return <FoodDetails {...props} token={token}></FoodDetails>;
+            }}
+          />
+        </Switch>
+      ) : null}
     </div>
   );
 }
