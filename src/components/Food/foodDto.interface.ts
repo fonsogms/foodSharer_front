@@ -6,6 +6,7 @@ export interface FoodDto {
   title: string;
   expiryDate: string;
   description: string;
+  contact: string;
   latitude: number;
   longitude: number;
   address: string;

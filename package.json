@@ -11,6 +11,7 @@
     "@types/react-dom": "^16.9.0",
     "axios": "^0.19.2",
     "react": "next",
+    "react-async": "^10.0.1",
     "react-dom": "next",
     "react-map-gl": "^5.2.7",
     "react-router-dom": "^5.2.0",

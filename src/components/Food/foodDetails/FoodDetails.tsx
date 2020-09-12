@@ -10,6 +10,7 @@ const FoodDetails = (props) => {
     id: 0,
     title: "",
     description: "",
+    contact: "",
     latitude: 0,
     longitude: 0,
     address: "",

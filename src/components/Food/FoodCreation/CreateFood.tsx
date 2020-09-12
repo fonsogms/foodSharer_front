@@ -13,6 +13,7 @@ const CreateFood = (props) => {
   const [foodDto, setFoodDto] = useState<FoodDto>({
     title: "",
     description: "",
+    contact: "",
     latitude: 0,
     longitude: 0,
     address: "",
@@ -109,6 +110,17 @@ const CreateFood = (props) => {
               name="description"
               onChange={(e) => handleChange(e)}
               value={foodDto.description}
+            />
+          </div>
+        </div>
+        <div>
+          <h4>Contact (mail or phone)</h4>
+          <div>
+            <input
+              type="text"
+              name="contact"
+              onChange={(e) => handleChange(e)}
+              value={foodDto.contact}
             />
           </div>
         </div>

@@ -12,6 +12,7 @@ const FoodEdit = (props) => {
     id: 0,
     title: "",
     description: "",
+    contact: "",
     latitude: 0,
     longitude: 0,
     address: "",
@@ -162,6 +163,17 @@ const FoodEdit = (props) => {
                         name="description"
                         onChange={(e) => handleChange(e)}
                         value={foodDto.description}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Contact (mail or phone)</h4>
+                    <div>
+                      <input
+                        type="text"
+                        name="contact"
+                        onChange={(e) => handleChange(e)}
+                        value={foodDto.contact}
                       />
                     </div>
                   </div>

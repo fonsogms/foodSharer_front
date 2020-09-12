@@ -2,21 +2,24 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { FoodObject } from "../Food/foodDetails/FoodDetails";
+import async from "react-async";
+
 const ProfileFood = (props) => {
   const [foodItems, setFoodItems] = useState<FoodObject[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const getProfile = async () => {
       try {
         const { data } = await axios.get(
-          (process.env.REACT_APP_DOMAIN || "") + "/api/auth/profile",
+          (process.env.REACT_APP_DOMAIN || "") + "/api/profile/food",
           { headers: { Authorization: "Bearer " + props.token } }
         );
-        setFoodItems(data.food);
+        console.log(data);
+        setFoodItems(data);
       } catch (error) {
         console.log(error);
       }
     };
-
     getProfile();
   }, []);
   const handleDelete = async (
@@ -43,6 +46,7 @@ const ProfileFood = (props) => {
       console.log(error);
     }
   };
+  console.log(foodItems, loading);
   return (
     <div
       style={{
