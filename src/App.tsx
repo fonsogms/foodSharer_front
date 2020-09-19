@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import SignUp from "./components/auth/SignUp";
 import { Route, Switch } from "react-router-dom";
-import Login from "./components/auth/Login";
+import Login from "./components/auth/Login/Login";
 import Home from "./components/Home/Home";
 import CreateFood from "./components/Food/FoodCreation/CreateFood";
 import FoodDetails from "./components/Food/foodDetails/FoodDetails";
@@ -27,6 +27,13 @@ function App(props) {
       <Route
         exact
         path="/login"
+        render={(props) => {
+          return <Login {...props} token={token} setToken={setToken}></Login>;
+        }}
+      />
+      <Route
+        exact
+        path="/"
         render={(props) => {
           return <Login {...props} token={token} setToken={setToken}></Login>;
         }}

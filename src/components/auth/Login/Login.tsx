@@ -1,5 +1,6 @@
 import React, { useState, SyntheticEvent, ChangeEvent } from "react";
-import { setToken } from "../../token.info";
+import { StyledDiv, StyledInputDiv, StyledForm, StyledInput } from "./Styles";
+
 const Login = (props) => {
   interface LoginDto {
     username: string;
@@ -47,39 +48,46 @@ const Login = (props) => {
     }
   };
   return (
-    <div>
-      <h1>Please Log in</h1>
-      <form action="">
-        <input
-          type="text"
-          onChange={handleChange}
-          name="username"
-          value={loginDto.username}
-        />
-        <input
-          type="password"
-          onChange={handleChange}
-          name="password"
-          value={loginDto.password}
-        />
-        <div>
-          <button
-            onClick={(e) => {
-              signIn(e, loginDto);
-            }}
-          >
-            Login
-          </button>
-        </div>
-      </form>
+    <StyledDiv>
       <div>
-        {console.log(errorMessage)}
-        {errorMessage[0] &&
-          errorMessage.map((elem, index) => {
-            return <h2 key={index}>{elem}</h2>;
-          })}
+        <div></div>
+        <h1>Please Log in</h1>
+        <StyledForm action="">
+          <StyledInputDiv>
+            <StyledInput
+              type="text"
+              onChange={handleChange}
+              name="username"
+              value={loginDto.username}
+            />
+          </StyledInputDiv>
+          <StyledInputDiv>
+            <StyledInput
+              type="password"
+              onChange={handleChange}
+              name="password"
+              value={loginDto.password}
+            />
+          </StyledInputDiv>
+          <div>
+            <button
+              onClick={(e) => {
+                signIn(e, loginDto);
+              }}
+            >
+              Login
+            </button>
+          </div>
+        </StyledForm>
+        <div>
+          {console.log(errorMessage)}
+          {errorMessage[0] &&
+            errorMessage.map((elem, index) => {
+              return <h2 key={index}>{elem}</h2>;
+            })}
+        </div>
       </div>
-    </div>
+    </StyledDiv>
   );
 };
 

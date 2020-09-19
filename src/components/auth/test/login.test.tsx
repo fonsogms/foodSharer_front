@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import Login from "../Login";
+import Login from "../Login/Login";
 
 test("Function tests", () => {
   expect(1).toBe(1);
