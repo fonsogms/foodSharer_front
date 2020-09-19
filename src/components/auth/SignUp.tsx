@@ -1,6 +1,7 @@
 import React, { useState, SyntheticEvent } from "react";
 import axios from "axios";
 import { setToken } from "../../token.info";
+import { StyledError } from "./Login/Styles";
 
 const SingUp = (props) => {
   interface RegisterDto {
@@ -73,12 +74,12 @@ const SingUp = (props) => {
           </button>
         </div>
       </form>
-      <div>
+      <StyledError>
         {errorMessage[0] &&
           errorMessage.map((elem, index) => {
             return <h2 key={index}>{elem}</h2>;
           })}
-      </div>
+      </StyledError>
     </div>
   );
 };

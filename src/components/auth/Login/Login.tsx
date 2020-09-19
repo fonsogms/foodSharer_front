@@ -1,5 +1,11 @@
 import React, { useState, SyntheticEvent, ChangeEvent } from "react";
-import { StyledDiv, StyledInputDiv, StyledForm, StyledInput } from "./Styles";
+import {
+  StyledDiv,
+  StyledInputDiv,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+} from "./Styles";
 
 const Login = (props) => {
   interface LoginDto {
@@ -39,20 +45,25 @@ const Login = (props) => {
         props.history.push("/home");
       } else {
         console.log(data);
-        setErrorMessage([data.message]);
+        setErrorMessage([...data.message]);
       }
     } catch (error) {
-      console.log(error, "here");
-      console.log(error.response.data, "this is the error");
-      setErrorMessage(error.response.data.message);
+      console.log(error.response.data.message);
+      let newErrorMessage: string[] = [""];
+      if (typeof error.response.data.message == "string") {
+        newErrorMessage[0] = error.response.data.message;
+      } else {
+        newErrorMessage = error.response.data.message;
+      }
+      setErrorMessage(newErrorMessage);
     }
   };
   return (
     <StyledDiv>
-      <div>
-        <div></div>
-        <h1>Please Log in</h1>
-        <StyledForm action="">
+      <h1>Please Log in</h1>
+      <StyledForm action="">
+        <div>
+          <h3>Username</h3>
           <StyledInputDiv>
             <StyledInput
               type="text"
@@ -61,6 +72,10 @@ const Login = (props) => {
               value={loginDto.username}
             />
           </StyledInputDiv>
+        </div>
+        <div>
+          <h3>Password</h3>
+
           <StyledInputDiv>
             <StyledInput
               type="password"
@@ -69,23 +84,27 @@ const Login = (props) => {
               value={loginDto.password}
             />
           </StyledInputDiv>
-          <div>
-            <button
-              onClick={(e) => {
-                signIn(e, loginDto);
-              }}
-            >
-              Login
-            </button>
-          </div>
-        </StyledForm>
-        <div>
-          {console.log(errorMessage)}
-          {errorMessage[0] &&
-            errorMessage.map((elem, index) => {
-              return <h2 key={index}>{elem}</h2>;
-            })}
         </div>
+        <div>
+          <StyledButton
+            onClick={(e) => {
+              signIn(e, loginDto);
+            }}
+          >
+            Login
+          </StyledButton>
+        </div>
+      </StyledForm>
+      <div>
+        {console.log(errorMessage)}
+        {errorMessage[0] &&
+          errorMessage.map((elem, index) => {
+            return (
+              <div>
+                <h2 key={index}>{elem}</h2>
+              </div>
+            );
+          })}
       </div>
     </StyledDiv>
   );
