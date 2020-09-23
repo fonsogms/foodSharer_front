@@ -19,7 +19,7 @@ function App(props) {
       <Navbar token={token} setToken={setToken}></Navbar>
       <Route
         exact
-        path="/singUp"
+        path="/signup"
         render={(props) => {
           return <SignUp {...props} token={token} setToken={setToken}></SignUp>;
         }}

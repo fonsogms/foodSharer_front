@@ -5,6 +5,7 @@ import {
   StyledForm,
   StyledInput,
   StyledButton,
+  StyledLoginDiv,
 } from "./Styles";
 
 const Login = (props) => {
@@ -60,41 +61,54 @@ const Login = (props) => {
   };
   return (
     <StyledDiv>
-      <h1>Please Log in</h1>
-      <StyledForm action="">
-        <div>
-          <h3>Username</h3>
-          <StyledInputDiv>
-            <StyledInput
-              type="text"
-              onChange={handleChange}
-              name="username"
-              value={loginDto.username}
-            />
-          </StyledInputDiv>
-        </div>
-        <div>
-          <h3>Password</h3>
+      <StyledLoginDiv>
+        <h1>Welcome to foodsharer</h1>{" "}
+        <h4>
+          The best place to give the food that you dont want and to recieve the
+          food that you need.
+        </h4>
+        <StyledForm action="">
+          <div>
+            <h3>Username</h3>
+            <StyledInputDiv>
+              <StyledInput
+                type="text"
+                onChange={handleChange}
+                name="username"
+                value={loginDto.username}
+              />
+            </StyledInputDiv>
+          </div>
+          <div>
+            <h3>Password</h3>
 
-          <StyledInputDiv>
-            <StyledInput
-              type="password"
-              onChange={handleChange}
-              name="password"
-              value={loginDto.password}
-            />
-          </StyledInputDiv>
-        </div>
-        <div>
-          <StyledButton
-            onClick={(e) => {
-              signIn(e, loginDto);
-            }}
-          >
-            Login
-          </StyledButton>
-        </div>
-      </StyledForm>
+            <StyledInputDiv>
+              <StyledInput
+                type="password"
+                onChange={handleChange}
+                name="password"
+                value={loginDto.password}
+              />
+            </StyledInputDiv>
+          </div>
+          <div>
+            <StyledButton
+              onClick={(e) => {
+                signIn(e, loginDto);
+              }}
+            >
+              Login
+            </StyledButton>
+            <StyledButton
+              onClick={(e) => {
+                props.history.push("/signup");
+              }}
+            >
+              SignUp
+            </StyledButton>
+          </div>
+        </StyledForm>
+      </StyledLoginDiv>
       <div>
         {console.log(errorMessage)}
         {errorMessage[0] &&
