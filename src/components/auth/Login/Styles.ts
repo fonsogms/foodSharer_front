@@ -48,6 +48,7 @@ export const StyledButton = styled.button`
   color: white;
   border: none;
   font-family: "Chewy", cursive;
+  box-shadow: 0px 1px 2px black;
 `;
 export const StyledError = styled.div`
   display: flex;

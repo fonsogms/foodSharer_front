@@ -7,7 +7,7 @@ import Home from "./components/Home/Home";
 import CreateFood from "./components/Food/FoodCreation/CreateFood";
 import FoodDetails from "./components/Food/foodDetails/FoodDetails";
 import FoodEdit from "./components/Food/editFood/FoodEdit";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import ProfileFood from "./components/Profile/ProfileFood";
 import ProfileEdit from "./components/Profile/ProfileEdit";
