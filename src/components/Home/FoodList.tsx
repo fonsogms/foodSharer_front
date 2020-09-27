@@ -26,7 +26,7 @@ const FoodList = (props) => {
                       onerror
                     />
                     <StyledTitle>{elem.title}</StyledTitle>
-                    <h5>Expires:{new Date(elem.expiryDate).toDateString()}</h5>
+                    <h5>Expires: {new Date(elem.expiryDate).toDateString()}</h5>
                   </StyledFoodItem>
                   {secondElem && (
                     <StyledFoodItem
@@ -44,7 +44,10 @@ const FoodList = (props) => {
                       />
 
                       <StyledTitle>{secondElem.title}</StyledTitle>
-                      <p> Expires:{new Date(elem.expiryDate).toDateString()}</p>
+                      <p>
+                        {" "}
+                        Expires: {new Date(elem.expiryDate).toDateString()}
+                      </p>
                     </StyledFoodItem>
                   )}
                 </StyledFoodListRow>
