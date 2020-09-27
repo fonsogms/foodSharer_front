@@ -73,12 +73,17 @@ export const StyledFoodItem = styled.div`
   flex-direction: column;
   align-items: center;
   align-content: center;
+  :hover {
+    background: #008cba;
+    width: 41%;
+    height: 210px;
+  }
 `;
 export const StyledFoodImage = styled.img`
   width: 50%;
   height: 50%;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 25px;
 `;
 
 export const StyledTitle = styled.h3`

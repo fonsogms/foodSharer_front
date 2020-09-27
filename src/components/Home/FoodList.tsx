@@ -1,3 +1,4 @@
+import { Link } from "@material-ui/core";
 import React from "react";
 import {
   StyledFoodImage,
@@ -16,7 +17,9 @@ const FoodList = (props) => {
             if (index % 2 == 0) {
               return (
                 <StyledFoodListRow>
-                  <StyledFoodItem>
+                  <StyledFoodItem
+                    onClick={() => props.history.push(`/food/${elem.id}`)}
+                  >
                     <StyledFoodImage
                       src={elem.pictures[0] ? elem.pictures[0].url : ""}
                       alt=""
@@ -26,7 +29,11 @@ const FoodList = (props) => {
                     <h5>Expires:{new Date(elem.expiryDate).toDateString()}</h5>
                   </StyledFoodItem>
                   {secondElem && (
-                    <StyledFoodItem>
+                    <StyledFoodItem
+                      onClick={() =>
+                        props.history.push(`/food/${secondElem.id}`)
+                      }
+                    >
                       <StyledFoodImage
                         src={
                           secondElem.pictures[0]

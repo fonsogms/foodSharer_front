@@ -128,7 +128,10 @@ const Home = (props) => {
       <StyledMainDiv>
         <SearchNFoodList>
           <SearchBar setSearch={setSearch} search={search}></SearchBar>
-          <FoodList filteredItems={filteredItems}></FoodList>
+          <FoodList
+            history={props.history}
+            filteredItems={filteredItems}
+          ></FoodList>
         </SearchNFoodList>
 
         {location.latitude ? (
