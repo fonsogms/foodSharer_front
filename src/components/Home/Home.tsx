@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import Map from "./Map";
 import axios from "axios";
 import SearchBar from "./SearchBar";
+import FoodList from "./FoodList";
+import { SearchNFoodList, StyledMainDiv } from "./styles";
 export interface LatLong {
   latitude: number;
   longitude: number;
@@ -52,8 +54,8 @@ const Home = (props) => {
   const [viewPort, setViewPort] = useState<ViewPort>({
     longitude: 0,
     latitude: 0,
-    width: "60vw",
-    height: "60vh",
+    width: "100%",
+    height: "80vh",
     zoom: 10,
   });
   const [search, setSearch] = useState("");
@@ -123,18 +125,21 @@ const Home = (props) => {
   };
   return (
     <div>
-      <h1>Welcome User</h1>
-      <SearchBar setSearch={setSearch} search={search}></SearchBar>
-      {location.latitude ? (
-        <div>
+      <StyledMainDiv>
+        <SearchNFoodList>
+          <SearchBar setSearch={setSearch} search={search}></SearchBar>
+          <FoodList filteredItems={filteredItems}></FoodList>
+        </SearchNFoodList>
+
+        {location.latitude ? (
           <Map
             location={location}
             foodItems={filteredItems}
             viewPort={viewPort}
             setViewPort={setViewPort}
           ></Map>
-        </div>
-      ) : null}
+        ) : null}
+      </StyledMainDiv>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { LatLong, Food } from "./Home";
 import { Link } from "react-router-dom";
+import { StyledMap } from "./styles";
 const token =
   "pk.eyJ1IjoiZm9uc29nbXMiLCJhIjoiY2swbWRsZWo3MTV6bTNkcW9vc29ybDZyMSJ9.EiT_I5moTDeyh3CM_Uc5CQ";
 const Map = (props) => {
@@ -11,7 +12,7 @@ const Map = (props) => {
   });
   const [selectedFood, setSelectedFood] = useState<Food | null>(null);
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <StyledMap>
       <ReactMapGL
         {...props.viewPort}
         mapboxApiAccessToken={token}
@@ -78,7 +79,7 @@ const Map = (props) => {
           </Popup>
         ) : null}
       </ReactMapGL>
-    </div>
+    </StyledMap>
   );
 };
 
