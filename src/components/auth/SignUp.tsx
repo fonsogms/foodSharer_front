@@ -1,7 +1,15 @@
 import React, { useState, SyntheticEvent } from "react";
 import axios from "axios";
 import { setToken } from "../../token.info";
-import { StyledError } from "./Login/Styles";
+import {
+  StyledDiv,
+  StyledError,
+  StyledForm,
+  StyledLoginDiv,
+  StyledInputDiv,
+  StyledInput,
+  StyledButton,
+} from "./Login/Styles";
 
 const SingUp = (props) => {
   interface RegisterDto {
@@ -46,41 +54,52 @@ const SingUp = (props) => {
   };
   // console.log(errorMessage);
   return (
-    <div>
-      <h1>Please Sign Up</h1>
-      <form action="">
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          id="username"
-          name="username"
-          value={registerDto.username}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          onChange={handleChange}
-          name="password"
-          value={registerDto.password}
-        />
-        <div>
-          <button
-            onClick={(e) => {
-              signUp(e, registerDto);
-            }}
-          >
-            Register here
-          </button>
-        </div>
-      </form>
+    <StyledDiv>
+      <StyledLoginDiv>
+        <h1>Please Sign Up</h1>
+        <StyledForm action="">
+          <div>
+            <h3>Username</h3>
+            <StyledInputDiv>
+              <StyledInput
+                type="text"
+                onChange={handleChange}
+                name="username"
+                value={registerDto.username}
+              />
+            </StyledInputDiv>
+          </div>
+          <div>
+            <h3>Password</h3>
+            <StyledInputDiv>
+              <StyledInput
+                type="text"
+                onChange={handleChange}
+                name="username"
+                value={registerDto.username}
+              />
+            </StyledInputDiv>
+          </div>
+
+          <div>
+            <StyledButton
+              onClick={(e) => {
+                signUp(e, registerDto);
+              }}
+            >
+              Register
+            </StyledButton>
+          </div>
+        </StyledForm>
+      </StyledLoginDiv>
+
       <StyledError>
         {errorMessage[0] &&
           errorMessage.map((elem, index) => {
             return <h2 key={index}>{elem}</h2>;
           })}
       </StyledError>
-    </div>
+    </StyledDiv>
   );
 };
 

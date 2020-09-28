@@ -81,3 +81,8 @@ export const StyledFoodPicture = styled.img`
 export const StyledProfileFoodTitle = styled.h2`
   margin: 0px;
 `;
+export const StyledProfileTitle = styled.h1`
+  margin-bottom: 0px;
+  color: #698f9b;
+  font-size: 40px;
+`;

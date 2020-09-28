@@ -14,6 +14,7 @@ import {
   StyledProfileFoodElement,
   StyledProfileFoodInfo,
   StyledProfileFoodTitle,
+  StyledProfileTitle,
 } from "./Styles";
 import { StyledFoodImage } from "../../Home/styles";
 
@@ -62,6 +63,7 @@ const ProfileFood = (props) => {
   console.log(foodItems, loading);
   return (
     <StyledMainFoodProfileOrganizer>
+      <StyledProfileTitle>My food List</StyledProfileTitle>
       <StyledMainProfileFood>
         {foodItems
           ? foodItems.map((elem, index) => {
