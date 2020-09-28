@@ -1,5 +1,11 @@
 import React, { useState, SyntheticEvent, ChangeEvent } from "react";
 import axios from "axios";
+import {
+  StyledAddFoodDivInput,
+  StyledAddFoodFormH4,
+  StyledAddFoodInput,
+  StyledSuggestionDiv,
+} from "./FoodCreation/Styles";
 const getUrl = (address): string => {
   return `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?types=address&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}
   `;
@@ -34,20 +40,23 @@ const Address = (props) => {
   };
   return (
     <div>
-      <h4>Address</h4>
-      <div>
-        <input
+      <StyledAddFoodFormH4>Address</StyledAddFoodFormH4>
+      <StyledAddFoodDivInput>
+        <StyledAddFoodInput
           type="text"
           name="address"
           onChange={handleChange}
           value={props.target.address}
         />
-      </div>
+      </StyledAddFoodDivInput>
       {suggestions.map((elem, index) => {
         return (
-          <div key={index} onClick={() => selectSuggestion(elem)}>
+          <StyledSuggestionDiv
+            key={index}
+            onClick={() => selectSuggestion(elem)}
+          >
             {elem.place_name}
-          </div>
+          </StyledSuggestionDiv>
         );
       })}
     </div>

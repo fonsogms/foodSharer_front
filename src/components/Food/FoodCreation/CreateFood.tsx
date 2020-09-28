@@ -9,6 +9,14 @@ import Address from "../Address";
 import FileUpload from "../FileUpload";
 import axios from "axios";
 import { FoodDto } from "../foodDto.interface";
+import {
+  StyledAddFoodDiv,
+  StyledAddFoodDivInput,
+  StyledAddFoodForm,
+  StyledAddFoodFormH4,
+  StyledAddFoodInput,
+  StyledAddFoodTitle,
+} from "./Styles";
 const CreateFood = (props) => {
   const [foodDto, setFoodDto] = useState<FoodDto>({
     title: "",
@@ -83,8 +91,9 @@ const CreateFood = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <StyledAddFoodDiv>
+      <StyledAddFoodTitle>Add your food</StyledAddFoodTitle>
+      <StyledAddFoodForm onSubmit={handleSubmit}>
         <div>
           <div>
             {errorMessage[0] &&
@@ -92,48 +101,48 @@ const CreateFood = (props) => {
                 return <h2 key={index}>{elem}</h2>;
               })}
           </div>
-          <h4> Title</h4>
-          <div>
-            <input
+          <StyledAddFoodFormH4> Title</StyledAddFoodFormH4>
+          <StyledAddFoodDivInput>
+            <StyledAddFoodInput
               type="text"
               name="title"
               onChange={handleChange}
               value={foodDto.title}
             />
-          </div>
+          </StyledAddFoodDivInput>
         </div>
         <div>
-          <h4>Description</h4>
-          <div>
-            <input
+          <StyledAddFoodFormH4>Description</StyledAddFoodFormH4>
+          <StyledAddFoodDivInput>
+            <StyledAddFoodInput
               type="text"
               name="description"
               onChange={(e) => handleChange(e)}
               value={foodDto.description}
             />
-          </div>
+          </StyledAddFoodDivInput>
         </div>
         <div>
-          <h4>Contact (mail or phone)</h4>
-          <div>
-            <input
+          <StyledAddFoodFormH4>Contact (mail or phone)</StyledAddFoodFormH4>
+          <StyledAddFoodDivInput>
+            <StyledAddFoodInput
               type="text"
               name="contact"
               onChange={(e) => handleChange(e)}
               value={foodDto.contact}
             />
-          </div>
+          </StyledAddFoodDivInput>
         </div>
         <div>
-          <h4>Expiry Date</h4>
-          <div>
-            <input
+          <StyledAddFoodFormH4>Expiry Date</StyledAddFoodFormH4>
+          <StyledAddFoodDivInput>
+            <StyledAddFoodInput
               type="Date"
               name="expiryDate"
               onChange={handleChange}
               value={foodDto.expiryDate}
             />
-          </div>
+          </StyledAddFoodDivInput>
         </div>
 
         <Address target={foodDto} setTarget={setFoodDto}></Address>
@@ -144,8 +153,8 @@ const CreateFood = (props) => {
         ></FileUpload>
 
         <button type="submit">Add food</button>
-      </form>
-    </div>
+      </StyledAddFoodForm>
+    </StyledAddFoodDiv>
   );
 };
 

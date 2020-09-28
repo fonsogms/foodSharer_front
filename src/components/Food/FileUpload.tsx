@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState, ChangeEvent } from "react";
 import axios from "axios";
+import { StyledAddFoodFormH4 } from "./FoodCreation/Styles";
 const FileUpload = (props) => {
   const [loading, setLoading] = useState<Boolean>(false);
 
@@ -51,7 +52,7 @@ const FileUpload = (props) => {
   };
   return (
     <div>
-      <h4>Add Pictures</h4>
+      <StyledAddFoodFormH4>Add Pictures</StyledAddFoodFormH4>
       <div>
         {loading ? (
           <div>

@@ -73,10 +73,10 @@ const SingUp = (props) => {
             <h3>Password</h3>
             <StyledInputDiv>
               <StyledInput
-                type="text"
+                type="password"
                 onChange={handleChange}
-                name="username"
-                value={registerDto.username}
+                name="password"
+                value={registerDto.password}
               />
             </StyledInputDiv>
           </div>
