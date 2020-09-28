@@ -6,12 +6,14 @@ import async from "react-async";
 import {
   StyledDeleteButton,
   StyledEditButton,
+  StyledFoodPicture,
   StyledMainFoodProfileOrganizer,
   StyledMainProfileFood,
   StyledPictureDiv,
   StyledProfileFoodButtons,
   StyledProfileFoodElement,
   StyledProfileFoodInfo,
+  StyledProfileFoodTitle,
 } from "./Styles";
 import { StyledFoodImage } from "../../Home/styles";
 
@@ -67,15 +69,17 @@ const ProfileFood = (props) => {
                 <StyledProfileFoodElement key={index}>
                   {elem.pictures.length ? (
                     <StyledPictureDiv>
-                      <StyledFoodImage src={elem.pictures[0].url} alt="" />
+                      <StyledFoodPicture src={elem.pictures[0].url} alt="" />
                     </StyledPictureDiv>
                   ) : (
                     <StyledPictureDiv>
-                      <StyledFoodImage src="/no-food-logo-764EA6FD7F-seeklogo.com.png" />
+                      <StyledFoodPicture src="/no-food-logo-764EA6FD7F-seeklogo.com.png" />
                     </StyledPictureDiv>
                   )}
                   <StyledProfileFoodInfo>
-                    <h2>{elem.title}</h2>
+                    <StyledProfileFoodTitle>
+                      {elem.title}
+                    </StyledProfileFoodTitle>
                     <StyledProfileFoodButtons>
                       <StyledEditButton>
                         <Link
