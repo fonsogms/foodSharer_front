@@ -35,5 +35,13 @@ export const StyledAddFoodInput = styled.input`
   border-radius: 100px;
 `;
 export const StyledSuggestionDiv = styled.div`
-  color: white;
+  color: #698f9b;
+  background: white;
+  border: 1px solid #32a1ce;
+`;
+export const StyledSuggestionsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
 `;

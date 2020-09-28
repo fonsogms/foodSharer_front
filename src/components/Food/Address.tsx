@@ -5,6 +5,7 @@ import {
   StyledAddFoodFormH4,
   StyledAddFoodInput,
   StyledSuggestionDiv,
+  StyledSuggestionsList,
 } from "./FoodCreation/Styles";
 const getUrl = (address): string => {
   return `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?types=address&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}
@@ -49,16 +50,18 @@ const Address = (props) => {
           value={props.target.address}
         />
       </StyledAddFoodDivInput>
-      {suggestions.map((elem, index) => {
-        return (
-          <StyledSuggestionDiv
-            key={index}
-            onClick={() => selectSuggestion(elem)}
-          >
-            {elem.place_name}
-          </StyledSuggestionDiv>
-        );
-      })}
+      <StyledSuggestionsList>
+        {suggestions.map((elem, index) => {
+          return (
+            <StyledSuggestionDiv
+              key={index}
+              onClick={() => selectSuggestion(elem)}
+            >
+              {elem.place_name}
+            </StyledSuggestionDiv>
+          );
+        })}
+      </StyledSuggestionsList>
     </div>
   );
 };
