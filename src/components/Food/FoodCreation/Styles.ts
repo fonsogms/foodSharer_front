@@ -4,7 +4,7 @@ export const StyledAddFoodDiv = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-export const StyledAddFoodForm = styled.div`
+export const StyledAddFoodForm = styled.form`
   background: #698f9b;
   box-shadow: 0px 4px 4px 5px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
