@@ -48,6 +48,7 @@ export const StyledEditButton = styled.button`
   width: 50px;
   height: auto;
   font-size: 100%;
+  font-family: "Chewy", cursive;
 `;
 
 export const StyledDeleteButton = styled.button`

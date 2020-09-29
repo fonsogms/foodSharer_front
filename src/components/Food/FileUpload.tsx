@@ -7,6 +7,7 @@ import {
   StyledFileUploadLabel,
 } from "./FoodCreation/Styles";
 import { StyledDeleteButton } from "../Profile/ProfileFood/Styles";
+import { StyledDeletePicture } from "./editFood/styles";
 const FileUpload = (props) => {
   const [loading, setLoading] = useState<Boolean>(false);
 
@@ -93,14 +94,14 @@ const FileUpload = (props) => {
                     style={{ width: "100px", height: "auto" }}
                   />
                   <div>
-                    <StyledDeleteButton
+                    <StyledDeletePicture
                       onClick={(e: SyntheticEvent) => {
                         e.preventDefault();
                         deletePic(elem.public_id);
                       }}
                     >
-                      Delete
-                    </StyledDeleteButton>
+                      Delete image
+                    </StyledDeletePicture>
                   </div>
                 </div>
               );

@@ -3,6 +3,20 @@ import axios from "axios";
 import { FoodDto } from "../foodDto.interface";
 import Address from "../Address";
 import FileUpload from "../FileUpload";
+import {
+  StyledAddFoodDiv,
+  StyledAddFoodForm,
+  StyledAddFoodTitle,
+  StyledAddFoodFormH4,
+  StyledAddFoodInput,
+  StyledAddFoodDivInput,
+} from "../FoodCreation/Styles";
+import {
+  StyledDeleteButton,
+  StyledEditButton,
+  StyledProfileFoodButtons,
+} from "../../Profile/ProfileFood/Styles";
+import { StyledEditFoodButtons } from "./styles";
 
 interface FoodObject extends FoodDto {
   id: number;
@@ -135,8 +149,10 @@ const FoodEdit = (props) => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <StyledAddFoodDiv>
+      <StyledAddFoodTitle>Edit your food</StyledAddFoodTitle>
+
+      <StyledAddFoodForm onSubmit={handleSubmit}>
         {errorMessage[0]
           ? errorMessage.map((elem, index) => {
               return <h2 key={index}>{elem}</h2>;
@@ -145,48 +161,50 @@ const FoodEdit = (props) => {
               <>
                 <div>
                   <div>
-                    <h4> Title</h4>
-                    <div>
-                      <input
+                    <StyledAddFoodFormH4> Title</StyledAddFoodFormH4>
+                    <StyledAddFoodDivInput>
+                      <StyledAddFoodInput
                         type="text"
                         name="title"
                         onChange={handleChange}
                         value={foodDto.title}
                       />
-                    </div>
+                    </StyledAddFoodDivInput>
                   </div>
                   <div>
-                    <h4>Description</h4>
-                    <div>
-                      <input
+                    <StyledAddFoodFormH4>Description</StyledAddFoodFormH4>
+                    <StyledAddFoodDivInput>
+                      <StyledAddFoodInput
                         type="text"
                         name="description"
                         onChange={(e) => handleChange(e)}
                         value={foodDto.description}
                       />
-                    </div>
+                    </StyledAddFoodDivInput>
                   </div>
                   <div>
-                    <h4>Contact (mail or phone)</h4>
-                    <div>
-                      <input
+                    <StyledAddFoodFormH4>
+                      Contact (mail or phone)
+                    </StyledAddFoodFormH4>
+                    <StyledAddFoodDivInput>
+                      <StyledAddFoodInput
                         type="text"
                         name="contact"
                         onChange={(e) => handleChange(e)}
                         value={foodDto.contact}
                       />
-                    </div>
+                    </StyledAddFoodDivInput>
                   </div>
                   <div>
-                    <h4>Expiry Date</h4>
-                    <div>
-                      <input
+                    <StyledAddFoodFormH4>Expiry Date</StyledAddFoodFormH4>
+                    <StyledAddFoodDivInput>
+                      <StyledAddFoodInput
                         type="Date"
                         name="expiryDate"
                         onChange={handleChange}
                         value={foodDto.expiryDate}
                       />
-                    </div>
+                    </StyledAddFoodDivInput>
                   </div>
 
                   <Address target={foodDto} setTarget={setFoodDto}></Address>
@@ -196,14 +214,16 @@ const FoodEdit = (props) => {
                     token={props.token}
                   ></FileUpload>
                 </div>
-                <div style={{ margin: "10px" }}>
-                  <button type="submit">Edit Food</button>
-                  <button onClick={deleteFood}>Delete Food</button>
-                </div>
+                <StyledEditFoodButtons>
+                  <StyledEditButton type="submit">Edit</StyledEditButton>
+                  <StyledDeleteButton onClick={deleteFood}>
+                    Delete
+                  </StyledDeleteButton>
+                </StyledEditFoodButtons>
               </>
             )}
-      </form>
-    </div>
+      </StyledAddFoodForm>
+    </StyledAddFoodDiv>
   );
 };
 
