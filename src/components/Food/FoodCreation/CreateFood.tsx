@@ -10,6 +10,7 @@ import FileUpload from "../FileUpload";
 import axios from "axios";
 import { FoodDto } from "../foodDto.interface";
 import {
+  StyledAddButton,
   StyledAddFoodDiv,
   StyledAddFoodDivInput,
   StyledAddFoodForm,
@@ -152,7 +153,7 @@ const CreateFood = (props) => {
           token={props.token}
         ></FileUpload>
 
-        <button type="submit">Add food</button>
+        <StyledAddButton type="submit">Add food</StyledAddButton>
       </StyledAddFoodForm>
     </StyledAddFoodDiv>
   );

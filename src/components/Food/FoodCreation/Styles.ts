@@ -45,3 +45,38 @@ export const StyledSuggestionsList = styled.div`
   align-items: center;
   margin: 10px;
 `;
+export const StyledMainAddressDiv = styled.div`
+width`;
+
+export const StyledAddButton = styled.button`
+  background: #2b8029;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: white;
+  font-family: "Chewy", cursive;
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  margin: 10px;
+  :hover {
+    background: #228b22;
+  }
+`;
+
+export const StyledFileUploadComponent = styled.div`
+  width: 100%;
+`;
+export const StyledFileUploadLabel = styled.label`
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: white;
+  :hover {
+    background: grey;
+  }
+`;
+export const StyledFileUploadInput = styled.input`
+  display: none;
+`;

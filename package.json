@@ -11,6 +11,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "axios": "^0.19.2",
+    "mdbreact": "^4.27.0",
     "react": "next",
     "react-async": "^10.0.1",
     "react-dom": "next",

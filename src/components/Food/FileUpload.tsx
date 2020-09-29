@@ -1,6 +1,12 @@
 import React, { SyntheticEvent, useState, ChangeEvent } from "react";
 import axios from "axios";
-import { StyledAddFoodFormH4 } from "./FoodCreation/Styles";
+import {
+  StyledAddFoodFormH4,
+  StyledFileUploadComponent,
+  StyledFileUploadInput,
+  StyledFileUploadLabel,
+} from "./FoodCreation/Styles";
+import { StyledDeleteButton } from "../Profile/ProfileFood/Styles";
 const FileUpload = (props) => {
   const [loading, setLoading] = useState<Boolean>(false);
 
@@ -51,7 +57,7 @@ const FileUpload = (props) => {
     props.setFoodDto({ ...props.foodDto, pictures: filteredPics });
   };
   return (
-    <div>
+    <StyledFileUploadComponent>
       <StyledAddFoodFormH4>Add Pictures</StyledAddFoodFormH4>
       <div>
         {loading ? (
@@ -63,34 +69,45 @@ const FileUpload = (props) => {
             />
           </div>
         ) : (
-          <input type="file" name="pictures" onChange={uploadImage} />
+          <StyledFileUploadLabel>
+            Add File
+            <StyledFileUploadInput
+              className="custom-file-input"
+              aria-describedby="inputGroupFileAddon01"
+              type="file"
+              name="pictures"
+              onChange={uploadImage}
+            />
+          </StyledFileUploadLabel>
         )}
       </div>
 
       {props.foodDto.pictures.length
         ? props.foodDto.pictures.map((elem, index) => {
-            return (
-              <div key={index}>
-                <img
-                  src={elem.url}
-                  alt="food_image"
-                  style={{ width: "100px", height: "auto" }}
-                />
-                <div>
-                  <button
-                    onClick={(e: SyntheticEvent) => {
-                      e.preventDefault();
-                      deletePic(elem.public_id);
-                    }}
-                  >
-                    Delete
-                  </button>
+            if (index <= 5) {
+              return (
+                <div key={index}>
+                  <img
+                    src={elem.url}
+                    alt="food_image"
+                    style={{ width: "100px", height: "auto" }}
+                  />
+                  <div>
+                    <StyledDeleteButton
+                      onClick={(e: SyntheticEvent) => {
+                        e.preventDefault();
+                        deletePic(elem.public_id);
+                      }}
+                    >
+                      Delete
+                    </StyledDeleteButton>
+                  </div>
                 </div>
-              </div>
-            );
+              );
+            }
           })
         : null}
-    </div>
+    </StyledFileUploadComponent>
   );
 };
 
