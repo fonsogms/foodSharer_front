@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { LatLong, Food } from "./Home";
 import { Link } from "react-router-dom";
-import { StyledMap } from "./styles";
+import {
+  StyledCheckFoodDetailsButton,
+  StyledMap,
+  StyledPopUp,
+  StyledPopUpImage,
+} from "./styles";
 const token =
   "pk.eyJ1IjoiZm9uc29nbXMiLCJhIjoiY2swbWRsZWo3MTV6bTNkcW9vc29ybDZyMSJ9.EiT_I5moTDeyh3CM_Uc5CQ";
 const Map = (props) => {
@@ -64,18 +69,25 @@ const Map = (props) => {
             }}
             closeOnClick={false}
           >
-            <h3>{selectedFood.title}</h3>
-            <div>
-              <img
-                src={
-                  selectedFood.pictures[0] ? selectedFood.pictures[0].url : ""
-                }
-                style={{ width: "50px", height: "auto" }}
-              />
-              <button>
-                <Link to={`/food/${selectedFood.id}`}>Check Food details</Link>
-              </button>
-            </div>
+            <StyledPopUp>
+              {" "}
+              <h3>{selectedFood.title}</h3>
+              <div>
+                <StyledPopUpImage
+                  src={
+                    selectedFood.pictures[0] ? selectedFood.pictures[0].url : ""
+                  }
+                />
+              </div>
+              <StyledCheckFoodDetailsButton>
+                <Link
+                  to={`/food/${selectedFood.id}`}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Check Food details
+                </Link>
+              </StyledCheckFoodDetailsButton>
+            </StyledPopUp>
           </Popup>
         ) : null}
       </ReactMapGL>

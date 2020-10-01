@@ -89,3 +89,24 @@ export const StyledFoodImage = styled.img`
 export const StyledTitle = styled.h3`
   margin: 0px;
 `;
+export const StyledPopUp = styled.div`
+  color: #698f9b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const StyledPopUpImage = styled.img`
+  width: 50px;
+  height: auto;
+  border-radius: 10px;
+`;
+export const StyledCheckFoodDetailsButton = styled.button`
+  background: #698f9b;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: white;
+  font-family: "Chewy", cursive;
+  margin: 10px;
+`;
