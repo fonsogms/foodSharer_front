@@ -140,6 +140,7 @@ const Home = (props) => {
             foodItems={filteredItems}
             viewPort={viewPort}
             setViewPort={setViewPort}
+            history={props.history}
           ></Map>
         ) : null}
       </StyledMainDiv>

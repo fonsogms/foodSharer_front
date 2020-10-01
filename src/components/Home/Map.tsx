@@ -69,7 +69,9 @@ const Map = (props) => {
             }}
             closeOnClick={false}
           >
-            <StyledPopUp>
+            <StyledPopUp
+              onClick={() => props.history.push(`/food/${selectedFood.id}`)}
+            >
               {" "}
               <h3>{selectedFood.title}</h3>
               <div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import SignUp from "./components/auth/SignUp";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Login from "./components/auth/Login/Login";
 import Home from "./components/Home/Home";
 import CreateFood from "./components/Food/FoodCreation/CreateFood";
@@ -93,7 +93,9 @@ function App(props) {
             }}
           />
         </Switch>
-      ) : null}
+      ) : (
+        <Redirect to="/login" />
+      )}
     </div>
   );
 }
