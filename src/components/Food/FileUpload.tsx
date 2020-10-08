@@ -1,8 +1,11 @@
 import React, { SyntheticEvent, useState, ChangeEvent } from "react";
 import axios from "axios";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 import {
   StyledAddFoodFormH4,
   StyledFileUploadComponent,
+  StyledFileUploadImage,
   StyledFileUploadInput,
   StyledFileUploadLabel,
 } from "./FoodCreation/Styles";
@@ -63,10 +66,10 @@ const FileUpload = (props) => {
       <div>
         {loading ? (
           <div>
-            <img
-              style={{ width: "200px", height: "auto" }}
+            <StyledFileUploadImage
+              style={{ width: "50%", height: "auto" }}
               alt="loading_Image"
-              src="/6d391369321565.5b7d0d570e829.gif"
+              src="/Pulse-1s-200px-1.gif"
             />
           </div>
         ) : (
@@ -88,11 +91,7 @@ const FileUpload = (props) => {
             if (index <= 5) {
               return (
                 <div key={index}>
-                  <img
-                    src={elem.url}
-                    alt="food_image"
-                    style={{ width: "100px", height: "auto" }}
-                  />
+                  <StyledFileUploadImage src={elem.url} alt="food_image" />
                   <div>
                     <StyledDeletePicture
                       onClick={(e: SyntheticEvent) => {

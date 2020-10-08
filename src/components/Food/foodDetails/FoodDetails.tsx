@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FoodDto } from "../foodDto.interface";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import "react-slideshow-image/dist/styles.css";
+import SlideShow from "./SlideShow";
+import { StyledFoodDetails } from "./Styles";
 export interface FoodObject extends FoodDto {
   id: number;
 }
@@ -47,7 +49,7 @@ const FoodDetails = (props) => {
   }, []);
   console.log(foodDto.pictures[0]);
   return (
-    <div>
+    <StyledFoodDetails>
       {errorMessage[0] ? (
         errorMessage.map((elem, index) => {
           return <h2 key={index}>{elem}</h2>;
@@ -67,36 +69,17 @@ const FoodDetails = (props) => {
             }
             if (typeof foodDto[key] === "object") {
               console.log("happening");
-              return (
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                  }}
-                >
-                  {foodDto[key].map((elem, index) => {
-                    return (
-                      <img
-                        key={index}
-                        src={elem.url}
-                        alt="food_pics"
-                        style={{ width: "100px", height: "auto" }}
-                      />
-                    );
-                  })}
-                </div>
-              );
+              return <SlideShow pictures={foodDto[key]}></SlideShow>;
             }
           })}
-          <div>
+          {/*   <div>
             <button>
               <Link to={"/food/edit/" + foodDto.id}>Edit</Link>
             </button>
-          </div>
+          </div> */}
         </>
       )}
-    </div>
+    </StyledFoodDetails>
   );
 };
 

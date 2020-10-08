@@ -80,3 +80,9 @@ export const StyledFileUploadLabel = styled.label`
 export const StyledFileUploadInput = styled.input`
   display: none;
 `;
+
+export const StyledFileUploadImage = styled.img`
+  width: 50%;
+  height: auto;
+  margin-top: 10px;
+`;

@@ -183,9 +183,7 @@ const FoodEdit = (props) => {
                     </StyledAddFoodDivInput>
                   </div>
                   <div>
-                    <StyledAddFoodFormH4>
-                      Contact (mail or phone)
-                    </StyledAddFoodFormH4>
+                    <StyledAddFoodFormH4>Contact</StyledAddFoodFormH4>
                     <StyledAddFoodDivInput>
                       <StyledAddFoodInput
                         type="text"
