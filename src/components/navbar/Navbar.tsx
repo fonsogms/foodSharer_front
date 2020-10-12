@@ -30,7 +30,7 @@ const Navbar = (props) => {
               Add food
             </Link>
           </StyledLink>
-          <StyledLink>
+          {/* <StyledLink>
             {" "}
             <Link
               style={{
@@ -42,7 +42,7 @@ const Navbar = (props) => {
               {" "}
               My Profile
             </Link>
-          </StyledLink>
+          </StyledLink> */}
           <StyledLink>
             {" "}
             <Link

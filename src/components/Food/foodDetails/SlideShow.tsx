@@ -13,12 +13,11 @@ const SlideShow = (props) => {
               style={{
                 height: "300px",
                 width: "100%",
+                borderRadius: "20px",
                 backgroundImage: `url(${elem.url})`,
                 backgroundSize: "100% 100%",
               }}
-            >
-              <span>Slide {index}</span>
-            </div>
+            ></div>
           );
         })}
       </Slide>
